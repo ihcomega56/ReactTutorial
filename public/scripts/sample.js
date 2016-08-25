@@ -62,6 +62,6 @@ var Comment = React.createClass({
 });
 
 ReactDOM.render(
-    <CommentBox data={data} />,
+    <CommentBox url="/api/comments" />,
     document.getElementById('content')
 );
