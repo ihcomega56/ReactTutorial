@@ -61,11 +61,12 @@ var CommentForm = React.createClass({
         this.setState({text: e.target.value});
     },
     handleSubmit: function (e) {
-        e.preventDefault();
+        e.preventDefault(); // ブラウザに, サブミット時のデフォルト動作をさせない.
         var author = this.state.author.trim();
         var text = this.state.text.trim();
         if (!author || !text) { return; }
-        this.setState({ author: '', text:'' });
+        this.props.onCommentSubmit({author: author, text: text});
+        this.setState({author: '', text: ''});
     },
     render: function () {
         return (
@@ -82,7 +83,7 @@ var CommentForm = React.createClass({
                     value={this.state.text}
                     onChange={this.handleTextChange}
                 />
-                <input type="submit" value="Post" />
+                <input type="submit" value="Post"/>
             </form>
         );
     }
